@@ -53,7 +53,7 @@ def Emotion_Judgment(*text):
             df2.loc[text[i]] = "中立评价"
             neutral += 1
     st.table(df2)
-    labels = "正面评价", "负面评价", "中立评价"
+    labels = "positive", "negative", "neutral"
     sizes = [positive, negative, neutral]
     explode = (0, 0.1, 0.1) # only ”explode” the 2nd slice
 

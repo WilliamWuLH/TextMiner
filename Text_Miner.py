@@ -10,7 +10,7 @@ import use_wordcloud
 def Index_Text_Miner():
     st.title('Text Miner 文本矿工')
     image = Image.open('./images/TextMiner.png')
-    st.image(image, caption='Text Miner', use_column_width=True)
+    st.image(image, caption='Text Miner')
     st.write('- developed by [WULH](http://www.wlhan.top/)\n- [Open Application](https://wulh-textminer.herokuapp.com/)\n- GitHub Repository : [WilliamWuLH/TextMiner](https://github.com/WilliamWuLH/TextMiner)')
     st.write('## What does Text Miner do?')
     st.write('- **对文本进行简单挖掘**\n- **进行数据可视化分析**')

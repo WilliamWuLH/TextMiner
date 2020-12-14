@@ -2,6 +2,8 @@
 
 ![GitHub deployments](https://img.shields.io/github/deployments/WilliamWuLH/TextMiner/wulh-textminer?label=deployment)  ![GitHub top language](https://img.shields.io/github/languages/top/WilliamWuLH/TextMiner)
 
+![Text Miner](./images/TextMiner.png)
+
 - developed by [WULH](http://www.wlhan.top/)
 - [Open Application](https://wulh-textminer.herokuapp.com/)
 - GitHub Repository : [WilliamWuLH/TextMiner](https://github.com/WilliamWuLH/TextMiner)

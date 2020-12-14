@@ -17,11 +17,14 @@ text_example = '这部电影真心棒，全程无尿点$这部电影简直烂到
 def Emotion_Judgment(*text):
     # 情绪判断，返回值为正面情绪的概率，越接近1表示正面情绪，越接近0表示负面情绪
     st.write('## 情绪判断')
-    st.write('### 返回值为正面情绪的概率，越接近1表示正面情绪，越接近0表示负面情绪')
     n = len(text)
     s = list(range(n))
     for i in range(n):
-        s[i] = SnowNLP(text[i])
+        str = text[i]
+        if str == '':
+            str = ' '
+        s[i] = SnowNLP(str)
+    #
     df1 = pd.DataFrame(
         columns = ['正面情绪的概率', '负面情绪的概率']
     )
@@ -40,7 +43,7 @@ def Emotion_Judgment(*text):
     negative = 0
     neutral = 0
     df2 = pd.DataFrame(
-        columns = ['情绪']
+        columns = ['情绪评价']
     )
     for i in range(n):
         if s[i].sentiments > 0.6:
@@ -62,14 +65,14 @@ def Emotion_Judgment(*text):
     shadow=True, startangle=90)
     ax1.axis('equal') # Equal aspect ratio ensures that pie is drawn as a circle.
 
-    plt.savefig('Emotion_Judgment.jpg')
-    image = Image.open('Emotion_Judgment.jpg')
+    plt.savefig('./images/Emotion_Judgment.jpg')
+    image = Image.open('./images/Emotion_Judgment.jpg')
     st.image(image, caption='Emotion_Judgment', use_column_width=True)
 
 def Text_Emotion_Judgment():
-    st.write('# 情绪判断')
+    st.title('情绪判断')
     st.write('### 请输入您要判断的所有句子，不同句子之间请用 $ 隔开！')
-    st.write('### 输入样例（有 8 个句子）：')
+    st.write('### 输入样例（包含有 8 个句子）：')
     st.write(text_show)
 
     in_text1 = st.text_input('请输入您要判断的所有句子：', text_example)

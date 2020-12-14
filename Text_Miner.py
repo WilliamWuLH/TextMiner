@@ -8,7 +8,9 @@ import use_wordcloud
 
 def Index_Text_Miner():
     st.title('Text Miner 文本矿工')
-    st.write('## 对文本进行简单挖掘，并进行数据可视化分析')
+    st.write('- developed by [WULH](http://www.wlhan.top/)\n- [Open Application](https://wulh-textminer.herokuapp.com/)\n- GitHub Repository : [WilliamWuLH/TextMiner](https://github.com/WilliamWuLH/TextMiner)')
+    st.write('## What does Text Miner do?')
+    st.write('- **对文本进行简单挖掘**\n- **进行数据可视化分析**')
     st.write('### 可进行的文本挖掘操作如下：\n- 关键词抽取\n- 情绪判断\n- 生成词云')
     st.write('## 请在左边的选项栏选择你要进行的文本操作')
 

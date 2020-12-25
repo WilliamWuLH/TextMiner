@@ -18,6 +18,8 @@ def Index_Text_Miner():
     st.write('## 请在左侧的选项栏选择你要进行的文本挖掘操作')
 
 # --- index
+image = Image.open('./images/TextMiner.png')
+st.sidebar.image(image, width=120)
 st.sidebar.title('Text Miner 文本矿工')
 st.sidebar.write('## 请选择你要进行的文本操作：')
 option = st.sidebar.selectbox(
@@ -32,6 +34,3 @@ elif option == '情绪判断':
     use_SnowNLP.Text_Emotion_Judgment()
 elif option == '生成词云':
     use_wordcloud.Text_Generate_WordCloud()
-
-image = Image.open('./images/TextMiner.png')
-st.sidebar.image(image)

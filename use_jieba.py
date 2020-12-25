@@ -37,6 +37,7 @@ def Base_TF_IDF(text = text3, k = 5):
 
     #
     st.table(df1)
+    st.write('### 数据可视化：')
     st.vega_lite_chart(df1, use_container_width=True, **{
         'mark': {'type': 'circle', 'tooltip': True},
         'encoding': {
@@ -76,6 +77,7 @@ def Base_TextRank(text = text3, k = 5):
 
     #
     st.table(df1)
+    st.write('### 数据可视化：')
     st.vega_lite_chart(df1, use_container_width=True, **{
         'mark': {'type': 'circle', 'tooltip': True},
         'encoding': {

@@ -33,6 +33,7 @@ def Emotion_Judgment(*text):
         df1.loc[text[i]] = s[i].sentiments, 1-s[i].sentiments
     
     st.table(df1)
+    st.write('### 数据可视化：')
     st.bar_chart(df1)
 
     # [0,1] 越接近1表示正面情绪，越接近0表示负面情绪
@@ -65,6 +66,7 @@ def Emotion_Judgment(*text):
     shadow=True, startangle=90)
     ax1.axis('equal') # Equal aspect ratio ensures that pie is drawn as a circle.
 
+    st.write('### 数据可视化：')
     plt.savefig('./images/Emotion_Judgment.jpg')
     image = Image.open('./images/Emotion_Judgment.jpg')
     st.image(image, caption='Emotion_Judgment', use_column_width=True)

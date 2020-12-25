@@ -1,5 +1,4 @@
 import os
-import Text_Miner
 
 def run_app():
     # Environment configuration

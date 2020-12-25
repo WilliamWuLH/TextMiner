@@ -24,24 +24,29 @@ def Base_TF_IDF(text = text3, k = 5):
 
     Keyword = list(i[0] for i in keywords)
     Weight = list(i[1] for i in keywords)
+    Keyword_count = list(text.count(i) for i in Keyword)
+    Keyword_Proportion = list((len(Keyword[i]) * Keyword_count[i])/len(text)*100 for i in range(len(Keyword)))
 
     # 输出抽取出的关键词
     df1 = pd.DataFrame(
-        columns = ['Weight']
+        columns = ['Keyword', 'Weight', '在文本中出现的次数（次）', '在文本中所占的比重（%）']
     )
-    for keyword in keywords:
-        df1.loc[keyword[0]] = keyword[1]
+    for i in range(len(keywords)):
+        df1.loc[Keyword[i]] = Keyword[i], Weight[i], Keyword_count[i], Keyword_Proportion[i]
     # st.write(df1)
+
     #
-    df2 = pd.DataFrame(
-        columns = Keyword
-    )
-    df2.loc['Weight'] = Weight
-    #
-    st.table(df2)
-    st.bar_chart(df1)
-    # st.area_chart(df1)
-    # st.line_chart(df1)
+    st.table(df1)
+    st.vega_lite_chart(df1, use_container_width=True, **{
+        'mark': {'type': 'circle', 'tooltip': True},
+        'encoding': {
+            'x': {'field': '在文本中出现的次数（次）', 'type': 'quantitative'},
+            'y': {'field': '在文本中所占的比重（%）', 'type': 'quantitative'},
+            'size':{'field': 'Weight', 'type': 'quantitative'},
+            "color": {"field": "Keyword", "type": "nominal"},
+            "shape": {"field": "Keyword", "type": "nominal"}
+        }
+    })
 
 def Base_TextRank(text = text3, k = 5):
     # 引入TextRank关键词抽取接口
@@ -58,24 +63,29 @@ def Base_TextRank(text = text3, k = 5):
     
     Keyword = list(i[0] for i in keywords)
     Weight = list(i[1] for i in keywords)
+    Keyword_count = list(text.count(i) for i in Keyword)
+    Keyword_Proportion = list((len(Keyword[i]) * Keyword_count[i])/len(text)*100 for i in range(len(Keyword)))
 
     # 输出抽取出的关键词
     df1 = pd.DataFrame(
-        columns = ['Weight']
+        columns = ['Keyword', 'Weight', '在文本中出现的次数（次）', '在文本中所占的比重（%）']
     )
-    for keyword in keywords:
-        df1.loc[keyword[0]] = keyword[1]
+    for i in range(len(keywords)):
+        df1.loc[Keyword[i]] = Keyword[i], Weight[i], Keyword_count[i], Keyword_Proportion[i]
     # st.write(df1)
+
     #
-    df2 = pd.DataFrame(
-        columns = Keyword
-    )
-    df2.loc['Weight'] = Weight
-    #
-    st.table(df2)
-    st.bar_chart(df1)
-    # st.area_chart(df1)
-    # st.line_chart(df1)
+    st.table(df1)
+    st.vega_lite_chart(df1, use_container_width=True, **{
+        'mark': {'type': 'circle', 'tooltip': True},
+        'encoding': {
+            'x': {'field': '在文本中出现的次数（次）', 'type': 'quantitative'},
+            'y': {'field': '在文本中所占的比重（%）', 'type': 'quantitative'},
+            'size':{'field': 'Weight', 'type': 'quantitative'},
+            "color": {"field": "Keyword", "type": "nominal"},
+            "shape": {"field": "Keyword", "type": "nominal"}
+        }
+    })
 
 def Text_Keywords():
     st.title('关键词抽取')
@@ -83,7 +93,7 @@ def Text_Keywords():
     st.write('### 原始文本样例：')
     st.write(text3)
     in_text1 = st.text_input('请输入您的原始文本（最好是中文文本）：', text3)
-    in_Number1 = st.number_input('请输入您要抽取出的关键词数量：', 4)
+    in_Number1 = st.number_input('请输入您要抽取出的关键词数量：', min_value=1, value=4)
 
     Base_TF_IDF(in_text1, in_Number1)
 
